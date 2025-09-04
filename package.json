@@ -1,6 +1,6 @@
 {
   "name": "neuro-expert",
-  "homepage": "https://maxgorshkov.github.io/neuro-expert/build",
+  "homepage": "/build",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
