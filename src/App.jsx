@@ -59,7 +59,7 @@ export default function App() {
 
           <main className="col-span-9">
             <div className="space-y-6">
-              {route === 'dashboard' && <Dashboard clients={clients} onOpenClient={(c)=>{ setSelectedClient(c); setRoute('clientCard'); }} />}
+              {route === 'dashboard' && <Dashboard clients={clients} onOpenClient={(c)=>{ setSelectedClient(c); setRoute('clientCard'); }} setRoute={setRoute} />}
               {route === 'clients' && <ClientsScreen clients={clients} onAdd={(c)=> setClients([c, ...clients])} onOpen={(c)=>{ setSelectedClient(c); setRoute('clientCard'); }} />}
               {route === 'exams' && <ExamsScreen exams={sampleExams} onPreview={(e)=>{ setSelectedExam(e); setRoute('examPreview'); }} onCreateLink={(e)=> alert('Ссылка создана: https://np.example/test/'+e.id)} />}
               {route === 'examPreview' && selectedExam && <ExamPreview exam={selectedExam} onBack={()=> setRoute('exams')} />}
@@ -76,7 +76,7 @@ export default function App() {
 
 // ---------- Sample components ----------
 
-function Dashboard({ clients, onOpenClient }){
+function Dashboard({ clients, onOpenClient, setRoute }){
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
@@ -102,7 +102,7 @@ function Dashboard({ clients, onOpenClient }){
       <div className="mt-6">
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-semibold">Короткий список клиентов</h3>
-          <button onClick={()=>alert('Перейти в Клиенты')} className="text-sm text-indigo-600">Управление клиентами →</button>
+          <button onClick={()=>{setRoute('clients');}} className="text-sm text-indigo-600">Управление клиентами →</button>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm p-4">
